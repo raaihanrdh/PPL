@@ -7,12 +7,23 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        'sm': '640px',  // Contoh aturan responsif untuk layar kecil
+        'md': '768px',  // Contoh aturan responsif untuk layar 
+        'lg': '1024px', // Contoh aturan responsif untuk layar besar
+        'tablet': '640px',
+        'laptop': '1024px',
+        'desktop': '1280px',
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      backgroundColor:{
+        'navy': 'navy',
+      },
     },
   },
-  plugins: [],
+  plugins: [require("daisyui")],
 }
