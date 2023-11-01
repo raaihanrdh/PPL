@@ -1,49 +1,18 @@
-// PageIRS.js
-import React from "react";
-import Layout from './path-to-your-layout/layout'; // Gantilah dengan path yang sesuai
+import React from "react"; 
 
-const PageIRS = () => {
+const Irs = () => {
   return (
-    <Layout>
-      <div className="container mx-auto">
-        <div className="overflow-x-auto">
-          <table className="table">
-            <thead>
-              <tr>
-                <th>NO</th>
-                <th>Name</th>
-                <th>NIM</th>
-                <th>Status</th>
-                <th>Angkatan</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td>Muhammad Raihan Ridho</td>
-                <td>24060121140131</td>
-                <td>Aktif</td>
-                <td>2021</td>
-                <td>
-                  <button className="transition duration-150 ease-in-out ...">Edit</button>
-                </td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              {/* tambahkan baris tambahan di sini jika diperlukan */}
-            </tbody>
-          </table>
-        </div>
+    <div className="">
+      <div className="navbar bg-navy"></div>
+      <div className="">
+       <div className="text bg-gray-300 mt- text-center  text-5xl text-black">Data KHS
       </div>
-    </Layout>
+      <div className="md:container md:mx-auto bg-white ">
+      </div>  
+      </div>
+    </div>
+
   );
 };
 
-export default PageIRS;
+export default Irs;

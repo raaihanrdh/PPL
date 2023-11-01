@@ -79,34 +79,6 @@ const GenerateAcc = () => {
 
           <div className="mb-4">
             <div className="flex flex-col">
-              <label className="block text-sm font-semibold text-black mb-1" htmlFor="tempat-lahir">
-                Tempat Lahir
-              </label>
-              <input
-                type="text"
-                id="tempat-lahir"
-                placeholder="Tempat Lahir"
-                className="input input-bordered w-full bg-white border-black text-black p-2"
-              />
-            </div>
-          </div>
-
-          <div className="mb-4">
-            <div className="flex flex-col">
-              <label className="block text-sm font-semibold text-black mb-1" htmlFor="tanggal-lahir">
-                Tanggal Lahir
-              </label>
-              <input
-                type="text"
-                id="tanggal-lahir"
-                placeholder="Tanggal Lahir"
-                className="input input-bordered w-full bg-white border-black text-black p-2"
-              />
-            </div>
-          </div>
-
-          <div className="mb-4">
-            <div className="flex flex-col">
               <label className="block text-sm font-semibold text-black mb-1" htmlFor="status">
                 Status
               </label>
@@ -121,78 +93,8 @@ const GenerateAcc = () => {
 
           <div className="mb-4">
             <div className="flex flex-col">
-              <label className="block text-sm font-semibold text-black mb-1" htmlFor="nik">
-                NIK
-              </label>
-              <input
-                type="text"
-                id="nik"
-                placeholder="NIK"
-                className="input input-bordered w-full bg-white border-black text-black p-2"
-              />
-            </div>
-          </div>
-
-          <div className="mb-4">
-            <div className="flex flex-col">
-              <label className="block text-sm font-semibold text-black mb-1" htmlFor="kota-asal">
-                Kota Asal
-              </label>
-              <input
-                type="text"
-                id="kota-asal"
-                placeholder="Kota Asal"
-                className="input input-bordered w-full bg-white border-black text-black p-2"
-              />
-            </div>
-          </div>
-
-          <div className="mb-4">
-            <div className="flex flex-col">
-              <label className="block text-sm font-semibold text-black mb-1" htmlFor="alamat">
-                Alamat
-              </label>
-              <input
-                type="text"
-                id="alamat"
-                placeholder="Alamat"
-                className="input input-bordered w-full bg-white border-black text-black p-2"
-              />
-            </div>
-          </div>
-
-          <div className="mb-4">
-            <div className="flex flex-col">
-              <label className="block text-sm font-semibold text-black mb-1" htmlFor="nomor-telepon">
-                Nomor Telepon
-              </label>
-              <input
-                type="text"
-                id="nomor-telepon"
-                placeholder="Nomor Telepon"
-                className="input input-bordered w-full bg-white border-black text-black p-2"
-              />
-            </div>
-          </div>
-
-          <div className="mb-4">
-            <div className="flex flex-col">
-              <label className="block text-sm font-semibold text-black mb-1" htmlFor="email">
-                Email
-              </label>
-              <input
-                type="text"
-                id="email"
-                placeholder="Email"
-                className="input input-bordered w-full bg-white border-black text-black p-2"
-              />
-            </div>
-          </div>
-
-          <div className="mb-4">
-            <div className="flex flex-col">
-              <label className="block text-sm font-semibold text-black mb-1" htmlFor="email-university">
-                Email University
+              <label className="block text-sm font-semibold text-black mb-1" htmlFor="doswal">
+                Dosen Wali
               </label>
               <input
                 type="text"
