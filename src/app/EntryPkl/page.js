@@ -2,13 +2,13 @@ import React from 'react';
 import Navbar from '../Component/navbar';
 import Sidebar from '../Component/sidebar';
 
-const EntryIrs = () => {
+const EntryPkl = () => {
   return (
     <div className="flex">
       <Navbar />
       <main className="flex-1 h-screen bg-gray-300 mt-10 p-10">
-          <div className="mt-10 md:container md:mx-auto">
-            <h1 className="text-4xl flex flex-none font-semibold   dark:text-black mt-10" >Entry IRS</h1>
+          <div className="mt-10 container mx-auto">
+            <h1 className="text-4xl flex flex-none font-semibold   dark:text-black mt-10" >Entry PKL</h1>
             <div className="flex flex-none mt-10 gap-10 item-center ">
                 <div className="item-center">
                     <div className="bg-white p-4 rounded-lg text-center">
@@ -21,20 +21,21 @@ const EntryIrs = () => {
                 <div className="flex grow gap-10 bg-white border border-black shadow shadow-md p-6">
                   <div className="w-full h-full">
                     <div className="mb-4">
-                      <label className="label" htmlFor="semesterStudi">
-                        <span className="label-text text-black text">Semester Aktif</span>
+                      <label className="label" htmlFor="statuspkl">
+                        <span className="label-text text-black text">Status PKL</span>
                       </label>
                       <div className="input-box">
-                        <input type="text" id="semesterStudi" placeholder="Type here.." className="input input-bordered w-full" />
+                        <input type="text" id="statuspkl" placeholder="Status PKL" className="input input-bordered w-full" />
                       </div>
                     </div>
                     <div className="mb-4">
-                      <label className="label" htmlFor="ipkSemester">
-                        <span className="label-text ">IPK Semester</span>
+                      <label className="label" htmlFor="nilaipkl">
+                        <span className="label-text">Nilai PKL</span>
                       </label>
                       <div className="input-box">
-                        <input type="text" id="ipkemester" placeholder="IRS" className="input input-bordered w-full" />
+                        <input type="text" id="nilaipkl" placeholder="Nilai PKL" className="input input-bordered w-full" />
                       </div>
+                    </div>
                       <div className="mb-10"> </div>
                       <div className="flex mb-4 items-center justify-center w-full">
                         <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
@@ -56,10 +57,9 @@ const EntryIrs = () => {
               </div>
             </div>
             </div>
-          </div>
       </main>
     </div>
   );
 };
 
-export default EntryIrs;
+export default EntryPkl;

@@ -7,8 +7,8 @@ const EntryIrs = () => {
     <div className="flex">
       <Navbar />
       <main className="flex-1 h-screen bg-gray-300 mt-10 p-10">
-          <div className="mt-10 md:container md:mx-auto">
-            <h1 className="text-4xl flex flex-none font-semibold   dark:text-black mt-10" >Entry IRS</h1>
+          <div className="mt-10 container mx-auto">
+            <h1 className="text-4xl flex flex-none font-semibold   dark:text-black mt-10" >Entry KHS</h1>
             <div className="flex flex-none mt-10 gap-10 item-center ">
                 <div className="item-center">
                     <div className="bg-white p-4 rounded-lg text-center">
@@ -22,18 +22,42 @@ const EntryIrs = () => {
                   <div className="w-full h-full">
                     <div className="mb-4">
                       <label className="label" htmlFor="semesterStudi">
-                        <span className="label-text text-black text">Semester Aktif</span>
+                        <span className="label-text text-black text">Semester Studi</span>
                       </label>
                       <div className="input-box">
-                        <input type="text" id="semesterStudi" placeholder="Type here.." className="input input-bordered w-full" />
+                        <input type="text" id="semesterStudi" placeholder="IRS" className="input input-bordered w-full" />
                       </div>
                     </div>
                     <div className="mb-4">
-                      <label className="label" htmlFor="ipkSemester">
-                        <span className="label-text ">IPK Semester</span>
+                      <label className="label" htmlFor="totalSKSSemester">
+                        <span className="label-text">Total SKS Semester</span>
                       </label>
                       <div className="input-box">
-                        <input type="text" id="ipkemester" placeholder="IRS" className="input input-bordered w-full" />
+                        <input type="text" id="totalSKSSemester" placeholder="IRS" className="input input-bordered w-full" />
+                      </div>
+                    </div>
+                    <div className="mb-4">
+                      <label className="label" htmlFor="totalSKSKumulatif">
+                        <span className="label-text">Total SKS Kumulatif</span>
+                      </label>
+                      <div className="input-box">
+                        <input type="text" id="totalSKSKumulatif" placeholder="IRS" className="input input-bordered w-full" />
+                      </div>
+                    </div>
+                    <div className="mb-4">
+                      <label className="label" htmlFor="IPSemester">
+                        <span className="label-text">IP Semester</span>
+                      </label>
+                      <div className="input-box">
+                        <input type="text" id="IPSemester" placeholder="IRS" className="input input-bordered w-full" />
+                      </div>
+                    </div>
+                    <div className="mb-4">
+                      <label className="label" htmlFor="IPKSemester">
+                        <span className="label-text">IPK Semester</span>
+                      </label>
+                      <div className="input-box">
+                        <input type="text" id="IPKSemester" placeholder="IRS" className="input input-bordered w-full" />
                       </div>
                       <div className="mb-10"> </div>
                       <div className="flex mb-4 items-center justify-center w-full">
