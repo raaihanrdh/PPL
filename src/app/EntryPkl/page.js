@@ -1,24 +1,23 @@
 import React from 'react';
 import Navbar from '../Component/navbar';
-import Sidebar from '../Component/sidebar';
 
 const EntryPkl = () => {
   return (
-    <div className="flex">
-      <Navbar />
-      <main className="flex-1 h-screen bg-gray-300 mt-10 p-10">
-          <div className="mt-10 container mx-auto">
-            <h1 className="text-4xl flex flex-none font-semibold   dark:text-black mt-10" >Entry PKL</h1>
-            <div className="flex flex-none mt-10 gap-10 item-center ">
+    <div className="flex-none h-screen  bg-gray-300">
+      <Navbar/>
+      <main>
+          <div className="m-10 container mx-auto bg-gray">
+            <h1 className="text-4xl font-semibold   dark:text-black mt-5" >Entry PKL</h1>
+            <div className="flex mt-10 gap-10 bg-gray-300  ">
                 <div className="item-center">
-                    <div className="bg-white p-4 rounded-lg text-center">
+                    <div className="container mx-auto bg-white p-4 rounded-lg text-center">
                         <img src="image/profil.jpg" alt="profil" width={200} />
                         <p className="font-semibold text-lg text-black">Nama: John Doe</p>
                         <p className="font-semibold text-lg text-black">NIM: 1234567890</p>
                         <div className="bg-gray-300 text-white px-4 py-2 rounded-md mt-2">Status</div>
                     </div>
                     </div>
-                <div className="flex grow gap-10 bg-white border border-black shadow shadow-md p-6">
+                <div className="flex grow gap-10 bg-white shadow-lg rounded-lg p-6">
                   <div className="w-full h-full">
                     <div className="mb-4">
                       <label className="label" htmlFor="statuspkl">
@@ -50,7 +49,7 @@ const EntryPkl = () => {
                         </label>
                         </div>
                         <div className="mb-4">
-                        <button className="btn bg bg-gray text-white w-32 h-10 ">Save</button>
+                        <button className="btn btn-primary hover:bg-gray-300 text-white w-32 h-10 ">Save</button>
                         <button className="btn ml-3 w-32 h-8" >Cancel</button>
                     </div>
                 </div>

@@ -1,8 +1,9 @@
 import React from 'react';
-import { Sidebar } from '../Component/sidebar';
+import Navbar from '../Component/navbar';
 const DataDosen = () => {
   return (
     <div>
+      <div><Navbar /></div>
       <div className="flex-1">
         <div className="flex items-center justify-center bg-gray-200 min-h-screen">
           <div className="max-w-7xl w-full bg-white shadow-md rounded-lg p-12 h-full">

@@ -1,37 +1,34 @@
 import React from 'react';
-import Navbar from '../Component/navbar';
-import Sidebar from '../Component/sidebar';
+import Navbar from '../Component/navbar'
 
-const studentprofile = () => {
+const dosenprofile = () => {
   return (
     <div className="flex-none h-screen bg-gray-300">
       <Navbar />
       <main>
         <div className="m-10 container mx-auto bg-gray">
-          <h1 className="text-4xl font-semibold dark:text-black mt-5">Entry PKL</h1>
+          <h1 className="text-4xl font-semibold dark:text-black mt-5">Dosen Profile</h1>
           <div className="flex mt-10 gap-10 bg-gray-300">
             <div className="item-center">
-              <div className="container mx-auto bg-white p-4 rounded-lg text-center">
+              <div className="container bg-white p-4 rounded-lg text-center">
                 <img src="image/profil.jpg" alt="profil" width={200} />
                 <p className="font-semibold text-lg text-black">Nama: John Doe</p>
                 <p className="font-semibold text-lg text-black">NIM: 1234567890</p>
                 <div className="bg-gray-300 text-white px-4 py-2 rounded-md mt-2">Status</div>
               </div>
             </div>
-                <div className="flex grow gap-10 bg-white rounded-lg p-6">
-                <div className="flex flex-grow gap-10">
-                  <div className="w-full ">
+                <div className="flex grow bg-white rounded-lg p-6">
                     <div className="mb-4">
                       <label className="label" htmlFor="nama">
                         <span className="label-text text-black text">Nama</span>
                       </label>
                       <div className="input-box">
-                        <input type="text" id="nama" placeholder="Nama" className="input input-bordered w-full" />
+                        <input type="text" id="nama" placeholder="NIP" className="input input-bordered w-full" />
                       </div>
                     </div>
                     <div className="mb-4">
-                      <label className="label" htmlFor="nim">
-                        <span className="label-text">NIM</span>
+                      <label className="label" htmlFor="NIP">
+                        <span className="label-text">NIP</span>
                       </label>
                       <div className="input-box">
                         <input type="text" id="nim" placeholder="NIM" className="input input-bordered w-full" />
@@ -133,12 +130,10 @@ const studentprofile = () => {
                     </div>
                   </div>
                 </div>
-                </div>
-              </div>
           </div>
       </main>
     </div>
   );
 };
 
-export default studentprofile;
+export default dosenprofile;

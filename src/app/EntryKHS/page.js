@@ -4,20 +4,20 @@ import Sidebar from '../Component/sidebar';
 
 const EntryIrs = () => {
   return (
-    <div className="flex">
+    <div className="flex-none h-screen bg-gray-300">
       <Navbar />
-      <main className="flex-1 h-screen bg-gray-300 mt-10 p-10">
-          <div className="mt-10 container mx-auto">
-            <h1 className="text-4xl flex flex-none font-semibold   dark:text-black mt-10" >Entry KHS</h1>
-            <div className="flex flex-none mt-10 gap-10 item-center ">
-                <div className="item-center">
-                    <div className="bg-white p-4 rounded-lg text-center">
-                        <img src="image/profil.jpg" alt="profil" width={200} />
-                        <p className="font-semibold text-lg text-black">Nama: John Doe</p>
-                        <p className="font-semibold text-lg text-black">NIM: 1234567890</p>
-                        <div className="bg-gray-300 text-white px-4 py-2 rounded-md mt-2">Status</div>
-                    </div>
-                    </div>
+      <main>
+        <div className="m-10 container mx-auto bg-gray">
+          <h1 className="text-4xl font-semibold dark:text-black mt-5">Entry KHS</h1>
+          <div className="flex mt-10 gap-10 bg-gray-300">
+            <div className="item-center">
+              <div className="container bg-white p-4 rounded-lg text-center">
+                <img src="image/profil.jpg" alt="profil" width={200} />
+                <p className="font-semibold text-lg text-black">Nama: John Doe</p>
+                <p className="font-semibold text-lg text-black">NIM: 1234567890</p>
+                <div className="bg-gray-300 text-white px-4 py-2 rounded-md mt-2">Status</div>
+              </div>
+            </div>
                 <div className="flex grow gap-10 bg-white border border-black shadow shadow-md p-6">
                   <div className="w-full h-full">
                     <div className="mb-4">
