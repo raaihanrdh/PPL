@@ -1,41 +1,50 @@
 import { Sequelize } from "sequelize";
 import db from "../config/Database.js";
-import Users from "./UserModel.js";
+import Mahasiswa from "./MahasiswaModel.js";
 
 const { DataTypes } = Sequelize;
 
 const Pkl = db.define(
   "pkl",
   {
-    uuid: {
+    id: {
       type: DataTypes.STRING,
       defaultValue: DataTypes.UUIDV4,
       allowNull: false,
+      primaryKey: true,
       validate: {
         notEmpty: true,
       },
     },
 
-    statuspkl: {
-      type: DataTypes.STRING,
+    semester: {
+      type: DataTypes.INTEGER,
 
+      allowNull: true,
+      validate: {
+        notEmpty: true,
+      },
+    },
+    NIM: {
+      type: DataTypes.INTEGER,
+      unique: true,
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+      },
+    },
+    status: {
+      type: DataTypes.STRING,
+      unique: true,
       allowNull: false,
       validate: {
         notEmpty: true,
       },
     },
     nilaipkl: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
 
-      allowNull: false,
-      validate: {
-        notEmpty: true,
-      },
-    },
-    NIM : {
-      type: DataTypes.INTEGER,
-
-      allowNull: false,
+      allowNull: true,
       validate: {
         notEmpty: true,
       },
@@ -45,5 +54,8 @@ const Pkl = db.define(
     freezeTableName: true,
   }
 );
+
+Mahasiswa.hasMany(Pkl, { foreignKey: "NIM" });
+Pkl.belongsTo(Mahasiswa, { foreignKey: "NIM" });
 
 export default Pkl;

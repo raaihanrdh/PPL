@@ -23,12 +23,13 @@ export const getPklById = async (req, res) => {
 };
 
 export const createPkl = async (req, res) => {
-  const { statuspkl, nilaipkl, nim } = req.body;
+  const { semester, nilaipkl, NIM, status } = req.body;
   try {
     await Pkl.create({
-      statuspkl: statuspkl,
+      semester: semester,
       nilaipkl: nilaipkl,
-      nim: nim,
+      NIM: NIM,
+      status: "unapprove",
     });
     res.status(201).json({ msg: "Register Berhasil" });
   } catch (error) {

@@ -16,7 +16,7 @@ export const Login = async (req, res) => {
   const match = await argon2.verify(user.password, req.body.password);
   if (!match) return res.status(400).json({ msg: "Wrong password" });
 
-  const userId = user.uuid;
+  const userId = user.id;
   const nama = user.nama;
   const email = user.email;
   const role = user.role;
@@ -25,12 +25,12 @@ export const Login = async (req, res) => {
     { userId, nama, email, role },
     process.env.ACCESS_TOKEN_SECRET,
     {
-      expiresIn: "1h",
+      expiresIn: "3h",
     }
   );
 
   res.status(200).json({
-    id: user.uuid,
+    id: user.id,
     nama: user.nama,
     email: user.email,
     role: user.role,
@@ -41,9 +41,9 @@ export const Login = async (req, res) => {
 export const Me = async (req, res) => {
   console.log(req.user.email);
   const user = await User.findOne({
-    attributes: ["uuid", "nama", "email", "role"],
+    attributes: ["id", "nama", "email", "role"],
     where: {
-      uuid: req.user.userId,
+      email: req.user.email,
     },
   });
   const operator = await Operator.findOne({

@@ -11,6 +11,7 @@ const Operator = db.define(
       type: DataTypes.STRING,
       defaultValue: DataTypes.UUIDV4,
       allowNull: false,
+      primaryKey: true,
       validate: {
         notEmpty: true,
       },
@@ -18,6 +19,7 @@ const Operator = db.define(
     NIP: {
       type: DataTypes.INTEGER,
       primaryKey: true,
+      unique: true,
       allowNull: false,
       validate: {
         notEmpty: true,

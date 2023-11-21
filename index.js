@@ -25,7 +25,9 @@ const store = new sessionStore({
   db: db,
 });
 
-// __ 
+// (async () => {
+//   await db.sync();
+// })();
 
 app.use(cookieParser());
 app.use(bodyParser.json());
@@ -33,6 +35,7 @@ app.use(bodyParser.json());
 app.use(
   cors({
     credentials: true,
+
     origin: "http://localhost:3000",
   })
 );
@@ -48,6 +51,14 @@ app.use(SkripsiRoute);
 app.use(KhsRoute);
 
 // store.sync();
+
+// db.sync({
+//   force: true,
+//   alter: true,
+// }).then(() => {
+//   console.log('🔄 User Model synced');
+//  });
+
 
 app.listen(process.env.APP_PORT, () => {
   console.log("Server up and running...");

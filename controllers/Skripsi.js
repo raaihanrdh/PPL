@@ -23,12 +23,13 @@ export const getSkripsiById = async (req, res) => {
 };
 
 export const createUser = async (req, res) => {
-  const { nilaiskripsi, jadwalsidang, nim } = req.body;
+  const { semester, NIM, nilaiskripsi, status} = req.body;
   try {
     await User.create({
+      semester: semester,
+      NIM: NIM,
       nilaiskripsi: nilaiskripsi,
-      jadwalsidang: jadwalsidang,
-      nim: nim, 
+      status: "unapprove",
     });
     res.status(201).json({ msg: "Register Berhasil" });
   } catch (error) {

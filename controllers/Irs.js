@@ -26,14 +26,14 @@ export const getIrsById = async (req, res) => {
 };
 
 export const createIrs = async (req, res) => {
-  const { semseteraktif, ip, skssemester, nim } =
+  const { semester, sks, NIM, status } =
     req.body;
   try {
-    await User.create({
-      semseteraktif: semseteraktif,
-      ip: ip,
-      skssemester: skssemester,
-      nim: nim,
+    await irs.create({
+      semester: semester,
+      sks: sks,
+      NIM: NIM,
+      status: "unapprove",
     });
     res.status(201).json({ msg: "Register Berhasil" });
   } catch (error) {

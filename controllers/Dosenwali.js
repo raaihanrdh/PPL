@@ -22,8 +22,8 @@ export const getUserById = async (req, res) => {
   }
 };
 
-export const createUser = async (req, res) => {
-  const { NIP, nama, alamat, email, notelepon, fakultas, departemen } =
+export const createDoswal = async (req, res) => {
+  const { NIP, nama, alamat, email, notelepon, tempatlahir, tanggallahir } =
     req.body;
   try {
     await User.create({
@@ -32,8 +32,8 @@ export const createUser = async (req, res) => {
       alamat: alamat,
       email: email,
       notelepon: notelepon,
-      fakultas: fakultas,
-      departemen: departemen,
+      tempatlahir: tempatlahir,
+      tanggallahir: tanggallahir, 
     });
     res.status(201).json({ msg: "Register Berhasil" });
   } catch (error) {

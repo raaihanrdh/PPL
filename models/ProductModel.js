@@ -6,7 +6,7 @@ const { DataTypes } = Sequelize;
 const Products = db.define(
   'user',
   {
-    uuid: {
+    id: {
       type: DataTypes.STRING,
       defaultValue: DataTypes.UUIDV4,
       allowNull: false,

@@ -11,7 +11,7 @@ const Mahasiswa = db.define(
       type: DataTypes.STRING,
       defaultValue: DataTypes.UUIDV4,
       allowNull: false,
-      primaryKey:true,
+      primaryKey: true,
       validate: {
         notEmpty: true,
       },
@@ -20,7 +20,8 @@ const Mahasiswa = db.define(
     NIM: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey:true,
+      unique: true,
+      primaryKey: true,
       validate: {
         notEmpty: true,
       },
@@ -32,24 +33,6 @@ const Mahasiswa = db.define(
       validate: {
         notEmpty: true,
         len: [3, 100],
-      },
-    },
-
-    fakultas: {
-      type: DataTypes.STRING,
-
-      allowNull: false,
-      validate: {
-        notEmpty: true,
-      },
-    },
-
-    prodi: {
-      type: DataTypes.STRING,
-
-      allowNull: false,
-      validate: {
-        notEmpty: true,
       },
     },
 
@@ -80,15 +63,6 @@ const Mahasiswa = db.define(
       },
     },
 
-    NIK: {
-      type: DataTypes.INTEGER,
-
-      allowNull: true,
-      validate: {
-        notEmpty: true,
-      },
-    },
-
     status: {
       type: DataTypes.STRING,
 
@@ -98,7 +72,16 @@ const Mahasiswa = db.define(
       },
     },
 
-    kotaasal: {
+    kota: {
+      type: DataTypes.STRING,
+
+      allowNull: true,
+      validate: {
+        notEmpty: true,
+      },
+    },
+
+    provinsi: {
       type: DataTypes.STRING,
 
       allowNull: true,
@@ -118,7 +101,7 @@ const Mahasiswa = db.define(
 
     email: {
       type: DataTypes.STRING,
-
+      unique: true,
       allowNull: true,
       unique: true,
       validate: {
@@ -150,7 +133,13 @@ const Mahasiswa = db.define(
       validate: {
         notEmpty: true,
       },
-      
+    },
+    islogin: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      validate: {
+        notEmpty: true,
+      },
     },
   },
   {

@@ -28,12 +28,10 @@ export function isAuthenticated(req, res, next) {
 }
 
 export const isOperator = async (req, res, next) => {
-  console.log(req.user);
-  console.log(req.body);
   try {
     const user = await Users.findOne({
       where: {
-        uuid: req.user.userId,
+        email: req.user.email,
       },
     });
 
@@ -45,6 +43,7 @@ export const isOperator = async (req, res, next) => {
     next();
   } catch (error) {
     return res.status(500).send({
+      error: error,
       message: "Unable to validate User role!",
     });
   }
@@ -52,11 +51,11 @@ export const isOperator = async (req, res, next) => {
 
 export const isMahasiswa = async (req, res, next) => {
   console.log(req.user);
-  console.log(req.body,);
+  console.log(req.body);
   try {
     const user = await Users.findOne({
       where: {
-        uuid: req.user.userId,
+        id: req.user.userId,
       },
     });
 
@@ -71,4 +70,27 @@ export const isMahasiswa = async (req, res, next) => {
       message: "Unable to validate User role!",
     });
   }
-}
+};
+
+export const isDosenwali = async (req, res, next) => {
+  console.log(req.user);
+  console.log(req.body);
+  try {
+    const user = await Users.findOne({
+      where: {
+        id: req.user.userId,
+      },
+    });
+
+    if (!user) return res.status(404).json({ message: "User tidak ditemukan" });
+
+    if (user.role !== "dosen wali")
+      return res.status(403).json({ message: "Anda tidak memiliki akses" });
+
+    next();
+  } catch (error) {
+    return res.status(500).send({
+      message: "Unable to validate User role!",
+    });
+  }
+};

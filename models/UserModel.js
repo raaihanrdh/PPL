@@ -4,12 +4,13 @@ import db from "../config/Database.js";
 const {DataTypes} = Sequelize;
 
 const Users = db.define(
-  'users',
+  "users",
   {
-    uuid: {
+    id: {
       type: DataTypes.STRING,
       defaultValue: DataTypes.UUIDV4,
       allowNull: false,
+      primaryKey: true,
       validate: {
         notEmpty: true,
       },
@@ -29,6 +30,7 @@ const Users = db.define(
       type: DataTypes.STRING,
 
       allowNull: false,
+      unique: true,
       validate: {
         notEmpty: true,
         isEmail: true,
@@ -52,7 +54,7 @@ const Users = db.define(
       validate: {
         notEmpty: true,
       },
-    }
+    },
   },
   {
     freezeTableName: true,

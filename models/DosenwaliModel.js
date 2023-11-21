@@ -1,7 +1,6 @@
 import { Sequelize } from "sequelize";
 import db from "../config/Database.js";
 import Users from "./UserModel.js";
-import Mahasiswa from "./MahasiswaModel.js";
 
 const { DataTypes } = Sequelize;
 
@@ -21,14 +20,11 @@ const Dosenwali = db.define(
     NIP: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      unique: true,
       primaryKey: true,
       validate: {
         notEmpty: true,
       },
-      references:{
-        model:Mahasiswa,
-        key: 'iddosen',
-      }
     },
     nama: {
       type: DataTypes.STRING,
@@ -51,7 +47,7 @@ const Dosenwali = db.define(
 
     email: {
       type: DataTypes.STRING,
-
+      unique: true,
       allowNull: false,
       validate: {
         notEmpty: true,
@@ -68,7 +64,7 @@ const Dosenwali = db.define(
       },
     },
 
-    fakultas: {
+    tempatlahir: {
       type: DataTypes.STRING,
 
       allowNull: false,
@@ -77,15 +73,14 @@ const Dosenwali = db.define(
       },
     },
 
-    departemen: {
-      type: DataTypes.STRING,
+    tanggallahir: {
+      type: DataTypes.DATE,
 
       allowNull: false,
       validate: {
         notEmpty: true,
       },
     },
-   
   },
   {
     freezeTableName: true,

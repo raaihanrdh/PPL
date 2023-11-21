@@ -2,7 +2,7 @@ import express from "express";
 import {
   getUsers,
   getUserById,
-  createUser,
+  createDoswal,
   //   updateUser,
   //   deleteUser,
 } from "../controllers/Dosenwali.js";
@@ -12,7 +12,7 @@ const router = express.Router();
 
 router.get("/dosenwali", getUsers);
 router.get("/dosenwali/:id", getUserById);
-router.post("/dosenwali", createUser);
+router.post("/dosenwali", createDoswal);
 // router.patch("/operator/:id", updateUser);
 // router.delete("/operator/:id", deleteUser);
 export default router;

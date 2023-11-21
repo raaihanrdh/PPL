@@ -1,5 +1,9 @@
 import Mahasiswa from "../models/MahasiswaModel.js";
 import User from "../models/UserModel.js";
+import axios from "axios";
+import bcrypt from "bcryptjs";
+import argon2 from "argon2";
+
 
 export const getMahasiswa = async (req, res) => {
   try {
@@ -23,86 +27,81 @@ export const getMahasiswaById = async (req, res) => {
   }
 };
 
-function generateRandomPassword(length) {
-  const characters =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
-  let password = "";
-  for (let i = 0; i < length; i++) {
-    const randomIndex = Math.floor(Math.random() * characters.length);
-    password += characters[randomIndex];
-  }
-  return password;
-}
-
 export const createUserMhs = async (req, res) => {
   const {
     NIM,
     nama,
-    alamat,
     email,
     angkatan,
-    notelepon,
-    prodi,
-    fakultas,
-    departemen,
     status,
     iddosen,
+    password,
   } = req.body;
   try {
+    function generateRandomPassword(length) {
+      const characters =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
+      let password = "";
+      for (let i = 0; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * characters.length);
+        password += characters[randomIndex];
+      }
+      return password;
+    }
+
     const randomPassword = generateRandomPassword(12);
+    const hashedPassword = await argon2.hash(randomPassword);
+
     const user = await User.create({
       nama: nama,
       email: email,
-      password: randomPassword,
+      password: hashedPassword,
       role: "mahasiswa",
+    }).then(async (user) => {
+      const mahasiswa = await Mahasiswa.create({
+        NIM: NIM,
+        nama: nama,
+        email: email,
+        angkatan: angkatan,
+        status: "aktif",
+        iddosen: iddosen,
+        islogin: 1
+      });
+      console.log("isi user", user);
+
+      return mahasiswa;
     });
-    const mahasiswa = await Mahasiswa.create({
-      NIM: NIM,
-      nama: nama,
-      alamat: alamat,
-      email: email,
-      prodi: prodi,
-      angkatan: angkatan,
-      notelepon: notelepon,
-      fakultas: fakultas,
-      departemen: departemen,
-      status: status,
-      iddosen: iddosen,
-    });
-    console.log("isi data", req.body);
-    res.status(201).json({ msg: "Register Berhasil", mahasiswa, user });
+    res.status(201).json({ msg: "Register Berhasil", user, randomPassword });
   } catch (error) {
     res.status(400).json({ msg: error.message });
   }
 };
-// export const updateUser = async (req, res) => {
-//   const { id } = req.params; // Mendapatkan ID pengguna dari parameter URL
-//   const { name, email, role } = req.body; // Mendapatkan data yang akan diupdate dari body request
+export const updateMhs = async (req, res) => {
+  const { id } = req.params; // Mendapatkan ID pengguna dari parameter URL
+  const { tempatlahir, tanggallahir, NIK, kotaasal, alamat, notelepon, jalurmasuk } = req.body; // Mendapatkan data yang akan diupdate dari body request
 
-//   try {
-//     // Mencari pengguna berdasarkan ID
-//     const user = await User.findOne({ where: { uuid: id } });
+  try {
+    const Mahasiswa = await Mahasiswa.findOne({ where: { uuid: id } });
+    
+    if (!mahasiswa) {
+      return res.status(404).json({ msg: "Mahasiswa tidak ditemukan" });
+    }
 
-//     // Jika pengguna tidak ditemukan, kembalikan respons 404 Not Found
-//     if (!user) {
-//       return res.status(404).json({ msg: "User tidak ditemukan" });
-//     }
+    // Memperbarui data pengguna
+    mahasiswa.tempatlahir = tempatlahir || mahasiswa.tempatlahir; // Jika name tidak disediakan, gunakan nilai yang ada
+    mahasiswa.tanggallahir = tanggallahir || mahasiswa.tanggallahir; // Jika email tidak disediakan, gunakan nilai yang ada
+    mahasiswa.NIK = NIK || mahasiswa.NIK; // Jika role tidak disediakan, gunakan nilai yang ada
 
-//     // Memperbarui data pengguna
-//     user.name = name || user.name; // Jika name tidak disediakan, gunakan nilai yang ada
-//     user.email = email || user.email; // Jika email tidak disediakan, gunakan nilai yang ada
-//     user.role = role || user.role; // Jika role tidak disediakan, gunakan nilai yang ada
+    // Simpan perubahan ke database
+    await mahasiswa.save();
 
-//     // Simpan perubahan ke database
-//     await user.save();
-
-//     // Mengembalikan respons sukses
-//     res.status(200).json({ msg: "User berhasil diperbarui", user });
-//   } catch (error) {
-//     // Jika terjadi kesalahan, kirimkan respons 500 Internal Server Error
-//     res.status(500).json({ msg: error.message });
-//   }
-// };
+    // Mengembalikan respons sukses
+    res.status(200).json({ msg: "Mahasiswa berhasil diperbarui", user });
+  } catch (error) {
+    // Jika terjadi kesalahan, kirimkan respons 500 Internal Server Error
+    res.status(500).json({ msg: error.message });
+  }
+};
 
 // export const deleteUser = async (req, res) => {
 //   const { id } = req.params; // Mendapatkan ID pengguna dari parameter URL

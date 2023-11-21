@@ -1,25 +1,26 @@
 import { Sequelize } from "sequelize";
 import db from "../config/Database.js";
-import Users from "./UserModel.js";
+import Mahasiswa from "./MahasiswaModel.js";
 
 const { DataTypes } = Sequelize;
 
 const Khs = db.define(
   "khs",
   {
-    uuid: {
+    id: {
       type: DataTypes.STRING,
       defaultValue: DataTypes.UUIDV4,
       allowNull: false,
+      primaryKey: true,
       validate: {
         notEmpty: true,
       },
     },
 
-    semesteraktif: {
+    semester: {
       type: DataTypes.INTEGER,
 
-      allowNull: false,
+      allowNull: true,
       validate: {
         notEmpty: true,
       },
@@ -27,23 +28,15 @@ const Khs = db.define(
     sks: {
       type: DataTypes.INTEGER,
 
-      allowNull: false,
+      allowNull: true,
       validate: {
         notEmpty: true,
       },
     },
-    skssemester: {
+    skskumulatif: {
       type: DataTypes.INTEGER,
 
-      allowNull: false,
-      validate: {
-        notEmpty: true,
-      },
-    },
-    ip: {
-      type: DataTypes.INTEGER,
-
-      allowNull: false,
+      allowNull: true,
       validate: {
         notEmpty: true,
       },
@@ -51,14 +44,30 @@ const Khs = db.define(
     ipsemester: {
       type: DataTypes.INTEGER,
 
-      allowNull: false,
+      allowNull: true,
+      validate: {
+        notEmpty: true,
+      },
+    },
+    ipkumulatif: {
+      type: DataTypes.INTEGER,
+
+      allowNull: true,
       validate: {
         notEmpty: true,
       },
     },
     NIM: {
       type: DataTypes.INTEGER,
-
+      unique: true,
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+      },
+    },
+    status: {
+      type: DataTypes.STRING,
+      unique: true,
       allowNull: false,
       validate: {
         notEmpty: true,
@@ -69,5 +78,11 @@ const Khs = db.define(
     freezeTableName: true,
   }
 );
+Mahasiswa.hasMany(Khs, {
+  foreignKey: "NIM",
+});
+Khs.belongsTo(Mahasiswa, {
+  foreignKey: "NIM",
+});
 
 export default Khs;

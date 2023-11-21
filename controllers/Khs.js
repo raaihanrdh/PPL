@@ -23,12 +23,16 @@ export const getKhsById = async (req, res) => {
 };
 
 export const createKhs = async (req, res) => {
-  const { statuspkl, nilaipkl, nim } = req.body;
+  const { semester, sks, skskumulatif, ipsemester, ipkumulatif, NIM, status } = req.body;
   try {
     await Khs.create({
-      statuspkl: statuspkl,
-      nilaipkl: nilaipkl,
-      nim: nim,
+      semester: semester,
+      sks: sks,
+      skskumulatif: skskumulatif,
+      ipsemester: ipsemester,
+      ipkumulatif: ipkumulatif,
+      NIM: NIM,
+      status: "unapprove",
     });
     res.status(201).json({ msg: "Register Berhasil" });
   } catch (error) {
