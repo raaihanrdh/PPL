@@ -4,7 +4,7 @@ import axios from "axios";
 import bcrypt from "bcryptjs";
 import argon2 from "argon2";
 
-
+//dasd
 export const getMahasiswa = async (req, res) => {
   try {
     const response = await Mahasiswa.findAll();
