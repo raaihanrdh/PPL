@@ -13,7 +13,7 @@ const router = express.Router();
 
 router.get("/mahasiswa", getMahasiswa);
 router.get("/mahasiswa/:id", getMahasiswaById);
-router.patch("/updtmahasiswa", isAuthenticated, isMahasiswa, updateMhs);
+router.put("/updtmahasiswa", isAuthenticated, isMahasiswa, updateMhs);
 // router.patch("/operator/:id", updateUser);
 // router.delete("/operator/:id", deleteUser);
 export default router;

@@ -67,7 +67,7 @@ export const createUserMhs = async (req, res) => {
         iddosen: iddosen,
         islogin: 1
       });
-      console.log("isi user", user);
+      
 
       return mahasiswa;
     });
@@ -76,32 +76,55 @@ export const createUserMhs = async (req, res) => {
     res.status(400).json({ msg: error.message });
   }
 };
+
 export const updateMhs = async (req, res) => {
-  const { id } = req.params; // Mendapatkan ID pengguna dari parameter URL
-  const { tempatlahir, tanggallahir, NIK, kotaasal, alamat, notelepon, jalurmasuk } = req.body; // Mendapatkan data yang akan diupdate dari body request
+  const {
+    tempatlahir,
+    tanggallahir,
+    kota,
+    alamat,
+    provinsi,
+    notelepon,
+    jalurmasuk,
+    status
+  } = req.body; // Mendapatkan data yang akan diupdate dari body request
 
   try {
-    const Mahasiswa = await Mahasiswa.findOne({ where: { uuid: id } });
+    // Dapatkan informasi pengguna dari token JWT yang sedang login
+    const user = req.user; // Asumsikan informasi pengguna (ID pengguna, dll.) sudah tersedia di req.user setelah proses autentikasi
+    console.log(user,"jdasiod")
     
+
+    // Temukan data mahasiswa berdasarkan informasi pengguna dari token
+    const mahasiswa = await Mahasiswa.findOne({ where: { nama: user.nama } }); // Ganti userId dengan nama kolom yang sesuai dengan ID pengguna di tabel Mahasiswa
+    console.log(mahasiswa)
     if (!mahasiswa) {
       return res.status(404).json({ msg: "Mahasiswa tidak ditemukan" });
     }
 
-    // Memperbarui data pengguna
-    mahasiswa.tempatlahir = tempatlahir || mahasiswa.tempatlahir; // Jika name tidak disediakan, gunakan nilai yang ada
-    mahasiswa.tanggallahir = tanggallahir || mahasiswa.tanggallahir; // Jika email tidak disediakan, gunakan nilai yang ada
-    mahasiswa.NIK = NIK || mahasiswa.NIK; // Jika role tidak disediakan, gunakan nilai yang ada
+    // Memperbarui data mahasiswa
+    mahasiswa.tempatlahir = tempatlahir || mahasiswa.tempatlahir;
+    mahasiswa.tanggallahir = tanggallahir || mahasiswa.tanggallahir;
+    mahasiswa.kota = kota || mahasiswa.kota;
+    mahasiswa.alamat = alamat || mahasiswa.alamat;
+    mahasiswa.provinsi = provinsi || mahasiswa.provinsi;
+    mahasiswa.notelepon = notelepon || mahasiswa.notelepon;
+    mahasiswa.jalurmasuk = jalurmasuk || mahasiswa.jalurmasuk;
+    
 
     // Simpan perubahan ke database
     await mahasiswa.save();
-
+    mahasiswa.islogin = 0;
+    await mahasiswa.save();
     // Mengembalikan respons sukses
-    res.status(200).json({ msg: "Mahasiswa berhasil diperbarui", user });
+    res.status(200).json({ msg: "mahasiswa berhasil diperbarui", mahasiswa });
   } catch (error) {
     // Jika terjadi kesalahan, kirimkan respons 500 Internal Server Error
     res.status(500).json({ msg: error.message });
   }
 };
+
+
 
 // export const deleteUser = async (req, res) => {
 //   const { id } = req.params; // Mendapatkan ID pengguna dari parameter URL

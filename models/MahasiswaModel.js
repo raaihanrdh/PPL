@@ -146,7 +146,9 @@ const Mahasiswa = db.define(
     freezeTableName: true,
   }
 );
-Users.hasMany(Mahasiswa, { foreignKey: "email" });
-Mahasiswa.belongsTo(Users, { foreignKey: "email" });
+Mahasiswa.belongsTo(Users, {
+  foreignKey: "email", // Kolom di tabel Mahasiswa yang menjadi foreign key
+  targetKey: "email", // Kolom di tabel Users yang menjadi target key
+});
 
 export default Mahasiswa;
